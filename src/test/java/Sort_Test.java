@@ -1,5 +1,6 @@
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.IndicativeSentencesGeneration;
 import org.junit.jupiter.api.Test;
 
 import Algorithms.Sort_Array;
@@ -106,16 +107,144 @@ public class Sort_Test {
         Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
     }
 
+//    @Test
+//    public void test_simpleSorting1e5NumbersFromFile()
+//    {
+//        Sort_Array sortObject = new Sort_Array(path + "\\1e5.txt");
+//        List<Integer> expected_Array = setupExpectedArray("1e5.txt", 100000);
+//        List<Integer> result = sortObject.Simple_Sort(Sorting_Choice.Final_Result).get(0);
+//        expected_Array.sort(Integer::compareTo);
+//
+//        Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
+//    }
+
     @Test
-    public void test_simpleSorting1e5NumbersFromFile()
-    {
-        Sort_Array sortObject = new Sort_Array(path + "\\1e5.txt");
-        List<Integer> expected_Array = setupExpectedArray("1e5.txt", 100000);
-        List<Integer> result = sortObject.Simple_Sort(Sorting_Choice.Final_Result).get(0);
+    public void test_efficientSorting10NumbersFromFile(){
+        Sort_Array sortObject = new Sort_Array(path + "\\10.txt");
+        List<Integer> expected_Array = setupExpectedArray("10.txt", 10);
+        List<Integer> result = sortObject.Efficient_Sort(Sorting_Choice.Final_Result).get(0);
         expected_Array.sort(Integer::compareTo);
 
         Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
     }
 
+    @Test
+    public void test_efficientSorting1e2NumbersFromFile(){
+        Sort_Array sortObject = new Sort_Array(path + "\\1e2.txt");
+        List<Integer> expected_Array = setupExpectedArray("1e2.txt", 100);
+        List<Integer> result = sortObject.Efficient_Sort(Sorting_Choice.Final_Result).get(0);
+        expected_Array.sort(Integer::compareTo);
+
+        Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
+    }
+
+    @Test
+    public void test_efficientSorting1e3NumbersFromFile(){
+        Sort_Array sortObject = new Sort_Array(path + "\\1e3.txt");
+        List<Integer> expected_Array = setupExpectedArray("1e3.txt", 1000);
+        List<Integer> result = sortObject.Efficient_Sort(Sorting_Choice.Final_Result).get(0);
+        expected_Array.sort(Integer::compareTo);
+
+        Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
+    }
+
+    @Test
+    public void test_efficientSorting1e4NumbersFromFile(){
+        Sort_Array sortObject = new Sort_Array(path + "\\1e4.txt");
+        List<Integer> expected_Array = setupExpectedArray("1e4.txt", 10000);
+        List<Integer> result = sortObject.Efficient_Sort(Sorting_Choice.Final_Result).get(0);
+        expected_Array.sort(Integer::compareTo);
+
+        Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
+    }
+
+//    @Test
+//    public void test_efficientSorting1e5NumbersFromFile(){
+//        Sort_Array sortObject = new Sort_Array(path + "\\1e5.txt");
+//        List<Integer> expected_Array = setupExpectedArray("1e5.txt", 100000);
+//        List<Integer> result = sortObject.Efficient_Sort(Sorting_Choice.Final_Result).get(0);
+//        expected_Array.sort(Integer::compareTo);
+//
+//        Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
+//    }
+//
+//    @Test
+//    public void test_efficientSorting1e6NumbersFromFile(){
+//        Sort_Array sortObject = new Sort_Array(path + "\\1e6.txt");
+//        List<Integer> expected_Array = setupExpectedArray("1e6.txt", 1000000);
+//        List<Integer> result = sortObject.Efficient_Sort(Sorting_Choice.Final_Result).get(0);
+//        expected_Array.sort(Integer::compareTo);
+//
+//        Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
+//    }
+
+    @Test
+    public void test_nonComparisonSorting10NumbersFromFile(){
+        Sort_Array sortObject = new Sort_Array(path + "\\10.txt");
+        List<Integer> expected_Array = setupExpectedArray("10.txt", 10);
+        List<Integer> result = sortObject.Non_Comparison_Sort(Sorting_Choice.Final_Result).get(0);
+        expected_Array.sort(Integer::compareTo);
+
+        Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
+    }
+
+    @Test
+    public void test_nonComparisonSorting1e2NumbersFromFile(){
+        Sort_Array sortObject = new Sort_Array(path + "\\1e2.txt");
+        List<Integer> expected_Array = setupExpectedArray("1e2.txt", 100);
+        List<Integer> result = sortObject.Non_Comparison_Sort(Sorting_Choice.Final_Result).get(0);
+        expected_Array.sort(Integer::compareTo);
+
+        Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
+    }
+
+    @Test
+    public void test_nonComparisonSorting1e3NumbersFromFile(){
+        Sort_Array sortObject = new Sort_Array(path + "\\1e3.txt");
+        List<Integer> expected_Array = setupExpectedArray("1e3.txt", 1000);
+        List<Integer> result = sortObject.Non_Comparison_Sort(Sorting_Choice.Final_Result).get(0);
+        expected_Array.sort(Integer::compareTo);
+
+        Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
+    }
+    @Test
+    public void test_nonComparisonSorting1e4NumbersFromFile(){
+        Sort_Array sortObject = new Sort_Array(path + "\\1e4.txt");
+        List<Integer> expected_Array = setupExpectedArray("1e4.txt", 10000);
+        List<Integer> result = sortObject.Non_Comparison_Sort(Sorting_Choice.Final_Result).get(0);
+        expected_Array.sort(Integer::compareTo);
+
+        Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
+    }
+//    @Test
+//    public void test_nonComparisonSorting1e5NumbersFromFile(){
+//        Sort_Array sortObject = new Sort_Array(path + "\\1e5.txt");
+//        List<Integer> expected_Array = setupExpectedArray("1e5.txt", (int)1e5);
+//        List<Integer> result = sortObject.Non_Comparison_Sort(Sorting_Choice.Final_Result).get(0);
+//        expected_Array.sort(Integer::compareTo);
+//
+//        Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
+//    }
+//    @Test
+//    public void test_nonComparisonSorting1e6NumbersFromFile(){
+//        Sort_Array sortObject = new Sort_Array(path + "\\1e6.txt");
+//        List<Integer> expected_Array = setupExpectedArray("1e6.txt", (int)1e6);
+//        List<Integer> result = sortObject.Non_Comparison_Sort(Sorting_Choice.Final_Result).get(0);
+//        expected_Array.sort(Integer::compareTo);
+//
+//        Assert.assertArrayEquals(expected_Array.toArray(), result.toArray());
+//    }
+
+//    @Test
+//    public void test_1e5words(){
+//        List<Integer> nums = new ArrayList<>();
+//        for (int i = 0; i < 1e5; i++){
+//            nums.add((int)(Math.random() * 1e5));
+//        }
+//        Sort_Array sortObject = new Sort_Array(nums);
+//        List<Integer> res = sortObject.Non_Comparison_Sort(Sorting_Choice.Final_Result).get(0);
+//        nums.sort(Integer::compareTo);
+//        Assert.assertArrayEquals(nums.toArray(), res.toArray());
+//    }
 
 }
