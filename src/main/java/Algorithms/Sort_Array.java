@@ -13,21 +13,26 @@ public class Sort_Array {
     {
         this.unsorted_Array = new ArrayList<>();
         String path = file_path.replace("\"","");
-        File file = new File(path);
 
         try {
-            Scanner scanner = new Scanner(file);
-            String line = scanner.nextLine();
-            String[] elements = line.split(",");
-
-            this.unsorted_Array = new ArrayList<>();
-            for (String element : elements) {
-                this.unsorted_Array.add(Integer.parseInt(element.trim()));
+            FileInputStream file = new FileInputStream(path);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(file));
+            String line = reader.readLine();
+            while (line != null) {
+                this.unsorted_Array.add(Integer.parseInt(line));
+                line = reader.readLine();
             }
-        } catch (Exception e) {
+            reader.close();
+        } catch (IOException e) {
             System.out.println("No such File!");
         }
 
+        this.size = this.unsorted_Array.size();
+    }
+
+    public Sort_Array(List<Integer> unsorted_Array)
+    {
+        this.unsorted_Array = unsorted_Array;
         this.size = this.unsorted_Array.size();
     }
 
