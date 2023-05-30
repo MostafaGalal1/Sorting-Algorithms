@@ -5,194 +5,151 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Random;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
 
 public class Heap_Test_Time
 {
-    @Test
-    public void Test_Sorting()
-    {
-        Long t1 = System.currentTimeMillis();
-        Max_Heap heap = new Max_Heap(6);
-        heap.add(1);
-        heap.add(3);
-        heap.add(2);
-
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
+    private String path = System.getProperty("user.dir") + "\\src\\test\\java";
+    private List<Integer> setupArrayFromFile(String fileName, int sz){
+        path += "\\" + fileName;
+        String newPath = path.replace("\"","");
+        List<Integer> expectedArray = new ArrayList<>();
+        try {
+            FileInputStream file = new FileInputStream(newPath);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(file));
+            String line = reader.readLine();
+            for(int i = 0; i < sz; i++){
+                expectedArray.add(Integer.parseInt(line));
+                line = reader.readLine();
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("Error happened while setting up file");
+        }
+        return expectedArray;
     }
+
     @Test
-    public void test_insert10NumbersAndCheckIfSorted()
-    {
-        Long t1 = System.currentTimeMillis();
+    public void test_heapsort10Elements(){
+        List<Integer> arr = setupArrayFromFile("10.txt", 10);
         Max_Heap heap = new Max_Heap(10);
-        Random random = new Random();
-        Integer[] numbers = new Integer[10];
-        for(int i = 0; i < 10; i++){
-            numbers[i] = random.nextInt(100);
-            heap.add(numbers[i]);
-        }
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
+        Long t1 = System.nanoTime();
+        heap.build(arr.toArray(new Integer[0]));
+        Long t2 = System.nanoTime();
+        System.out.println("building heap 10 elements took : " + (t2-t1) + " ns");
     }
 
-    // inserts 100 words and checks to see if they are sorted inside the heap
     @Test
-    public void test_insert100NumbersAndCheckIfSorted()
-    {
+    public void test_heapsort100Elements(){
+        List<Integer> arr = setupArrayFromFile("1e2.txt", 100);
         Max_Heap heap = new Max_Heap(100);
-        Long t1 = System.currentTimeMillis();
-        Random random = new Random();
-        Integer[] numbers = new Integer[100];
-        for(int i = 0; i < 100; i++){
-            numbers[i] = random.nextInt(100);
-            heap.add(numbers[i]);
-        }
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
+        Long t1 = System.nanoTime();
+        heap.build(arr.toArray(new Integer[0]));
+        Long t2 = System.nanoTime();
+        System.out.println("building heap 1e2 elements took : " + (t2-t1) + " ns");
     }
 
-    // inserts 1e6 numbers and checks to see if they are sorted inside the heap
     @Test
-    public void test_insert1e6NumbersAndCheckIfSorted()
-    {
-        Long t1 = System.currentTimeMillis();
-        Max_Heap heap = new Max_Heap(1000000);
-        Random random = new Random();
-        Integer[] numbers = new Integer[1000000];
-        for(int i = 0; i < 1000000; i++){
-            numbers[i] = random.nextInt(1000000);
-            heap.add(numbers[i]);
-        }
+    public void test_heapsort1e3Elements(){
+        List<Integer> arr = setupArrayFromFile("1e3.txt", 1000);
+        Max_Heap heap = new Max_Heap(1000);
+        Long t1 = System.nanoTime();
+        heap.build(arr.toArray(new Integer[0]));
+        Long t2 = System.nanoTime();
+        System.out.println("building heap 1e3 elements took : " + (t2-t1) + " ns");
+    }
 
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
+    @Test
+    public void test_heapsort1e4Elements(){
+        List<Integer> arr = setupArrayFromFile("1e4.txt", 10000);
+        Max_Heap heap = new Max_Heap(10000);
+        Long t1 = System.nanoTime();
+        heap.build(arr.toArray(new Integer[0]));
+        Long t2 = System.nanoTime();
+        System.out.println("building heap 1e4 elements took : " + (t2-t1) + " ns");
+    }
+
+    @Test
+    public void test_heapsort1e5Elements(){
+        List<Integer> arr = setupArrayFromFile("1e5.txt", 100000);
+        Max_Heap heap = new Max_Heap(100000);
+        Long t1 = System.nanoTime();
+        heap.build(arr.toArray(new Integer[0]));
+        Long t2 = System.nanoTime();
+        System.out.println("building heap 1e5 elements took : " + (t2-t1) + " ns");
+    }
+
+    @Test
+    public void test_heapsort1e6Elements(){
+        List<Integer> arr = setupArrayFromFile("1e6.txt", 1000000);
+        Max_Heap heap = new Max_Heap(1000000);
+        Long t1 = System.nanoTime();
+        heap.build(arr.toArray(new Integer[0]));
+        Long t2 = System.nanoTime();
+        System.out.println("building heap 1e6 elements took : " + (t2-t1) + " ns");
     }
 
     @Test
     public void test_insertNumbersOrdered(){
-        Long t1 = System.currentTimeMillis();
-        Max_Heap heap = new Max_Heap(1000);
-        for(int i = 100; i > 0; i--){
-            heap.add(i);
+        List<Integer> arr = new ArrayList<>();
+        for(int i = 1; i <= 1e4; i++){
+            arr.add(i);
         }
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
+        Max_Heap heap = new Max_Heap(10000);
+        Long t1 = System.nanoTime();
+        heap.build(arr.toArray(new Integer[0]));
+        Long t2 = System.nanoTime();
+        System.out.println("inserting 1e4 elements in order took : " + (t2-t1) + " ns");
     }
 
-    // generated an array and runs the build heap function on it
     @Test
-    public void test_buildHeapFromArrayWithRandomOrder(){
-        Long t1 = System.currentTimeMillis();
-        Max_Heap heap = new Max_Heap(10);
-        Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
-        heap.build(numbers);
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
-    }
-
-    // generated an array and runs the build heap function on it
-    @Test
-    public void test_buildHeapFromArrayWithReverseOrder(){
-        Long t1 = System.currentTimeMillis();
-        Max_Heap heap = new Max_Heap(10);
-        Integer[] numbers = new Integer[]{1,2,3,4,5,6,7,8,9,10};
-        heap.build(numbers);
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
-    }
-
-    // generated an array and runs the build heap function on it
-    @Test
-    public void test_buildHeapFromArrayWithSize100(){
-        Long t1 = System.currentTimeMillis();
-        Max_Heap heap = new Max_Heap(100);
-        Integer[] numbers = new Integer[100];
-        for(int i = 0; i < 100; i++){
-            numbers[i] = i;
+    public void test_insertNumbersReverseOrder(){
+        List<Integer> arr = new ArrayList<>();
+        for(int i = (int)1e4; i > 0; i--){
+            arr.add(i);
         }
-        heap.build(numbers);
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
+        Max_Heap heap = new Max_Heap(10000);
+        Long t1 = System.nanoTime();
+        heap.build(arr.toArray(new Integer[0]));
+        Long t2 = System.nanoTime();
+        System.out.println("inserting 1e4 elements in reverse order took : " + (t2-t1) + " ns");
     }
 
-    // generated an array and runs the build heap function on it
     @Test
-    public void test_buildHeapFromArrayWithSize1e6(){
-        Long t1 = System.currentTimeMillis();
-        Max_Heap heap = new Max_Heap(1000000);
-        Integer[] numbers = new Integer[1000000];
-        Random random = new Random();
-        for(int i = 0; i < 1000000; i++){
-            numbers[i] = random.nextInt((int)1e9);
+    public void test_meanTimeForInsertion(){
+        Max_Heap heap = new Max_Heap((int)1e6);
+        Random rand = new Random();
+        Double totalTime = (double) 0;
+        for (int i = 0; i < 1e6; i++){
+            Long t1 = System.nanoTime();
+            heap.add(rand.nextInt((int)1e9));
+            Long t2 = System.nanoTime();
+            totalTime += (t2-t1);
         }
-        heap.build(numbers);
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("mean time to insert an element using 1e6 numbers : " + totalTime/1e6  + " ns");
     }
 
-    @Test
-    public void test_peekFromHeap(){
-        Long t1 = System.currentTimeMillis();
-        Max_Heap heap = new Max_Heap(10);
-        Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
-        heap.build(numbers);
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
-    }
-
-    @Test
-    public void test_peekFromHeap2(){
-        Max_Heap heap = new Max_Heap(1000000);
-        Random random = new Random();
-        Long t1 = System.currentTimeMillis();
-        for(int i = 0; i < 1000000; i++){
-            int num = random.nextInt((int)1e9);
-            heap.add(num);
-        }
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
-    }
-
-    // generates heap using build heap from array, deletes the root, and checks to see if its correct
-    @Test
-    public void test_deleteFromHeap(){
-        Long t1 = System.currentTimeMillis();
-        Max_Heap heap = new Max_Heap(10);
-        Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
-        heap.build(numbers);
-        heap.delete();
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
-    }
     // generates heap using basic insertion, deletes the root, and checks to see if its correct
     @Test
-    public void test_deleteFromHeap2(){
-        Long t1 = System.currentTimeMillis();
+    public void test_deleteMeanTime(){
         Max_Heap heap = new Max_Heap(1000000);
         Random random = new Random();
-        Integer[] numbersAdded = new Integer[1000000];
         for(int i = 0; i < 1000000; i++){
-            int num = random.nextInt((int)1e9);
-            numbersAdded[i] = num;
-            heap.add(num);
+            heap.add(random.nextInt((int)1e9));
         }
-        heap.delete();
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
-    }
+        Double totalTime = (double) 0;
+        for(int i = 0; i < 1000000; i++){
+            Long t1 = System.nanoTime();
+            heap.delete();
+            Long t2 = System.nanoTime();
+            totalTime += (t2-t1);
+        }
+        System.out.println("mean time to delete an element using 1e6 numbers : " + totalTime/1e6  + " ns");
 
-    @Test
-    public void test_heapSizeAfterBuild(){
-        Long t1 = System.currentTimeMillis();
-        Max_Heap heap = new Max_Heap(10);
-        Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
-        heap.build(numbers);
-        Long t2 = System.currentTimeMillis();
-        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
 }
