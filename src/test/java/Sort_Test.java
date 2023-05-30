@@ -394,4 +394,17 @@ public class Sort_Test {
         Assert.assertArrayEquals(expected.toArray(), result.toArray());
     }
 
+    @Test
+    public void test_nonComparisonSortingAverageCase(){
+        List<Integer> expected = new ArrayList<>();
+        for(int i = 1; i <= 1e4; i++)
+            expected.add(i);
+        Collections.shuffle(expected);
+
+        Sort_Array sortObject = new Sort_Array(expected);
+        List<Integer> result = sortObject.Non_Comparison_Sort(Sorting_Choice.Final_Result).get(0);
+        expected.sort(Integer::compareTo);
+        Assert.assertArrayEquals(expected.toArray(), result.toArray());
+    }
+
 }
