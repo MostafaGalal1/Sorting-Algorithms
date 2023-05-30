@@ -6,6 +6,7 @@ import Algorithms.Sorting_Choice;
 
 public class App
 {
+     // TODO convert this shit into JavaFX GUI
      public void display()
      {
           Scanner scanner = new Scanner(System.in);
