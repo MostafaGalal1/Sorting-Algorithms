@@ -14,9 +14,9 @@ public class Heap_Test
     public void Test_Sorting()
     {
         Max_Heap heap = new Max_Heap(6);
-        heap.add(1);
-        heap.add(3);
-        heap.add(2);
+        heap.MAX_HEAP_INSERT(1);
+        heap.MAX_HEAP_INSERT(3);
+        heap.MAX_HEAP_INSERT(2);
 
         Integer[] sorted_array = heap.getSortedArrayAndEmptyHeap();
         Integer[] expected_array = new Integer[]{3, 2, 1};
@@ -32,7 +32,7 @@ public class Heap_Test
         Integer[] numbers = new Integer[10];
         for(int i = 0; i < 10; i++){
             numbers[i] = random.nextInt(100);
-            heap.add(numbers[i]);
+            heap.MAX_HEAP_INSERT(numbers[i]);
         }
 
         Integer[] result = heap.getSortedArrayAndEmptyHeap();
@@ -49,7 +49,7 @@ public class Heap_Test
         Integer[] numbers = new Integer[100];
         for(int i = 0; i < 100; i++){
             numbers[i] = random.nextInt(100);
-            heap.add(numbers[i]);
+            heap.MAX_HEAP_INSERT(numbers[i]);
         }
 
         Integer[] result = heap.getSortedArrayAndEmptyHeap();
@@ -65,7 +65,7 @@ public class Heap_Test
         Integer[] numbers = new Integer[1000000];
         for(int i = 0; i < 1000000; i++){
             numbers[i] = random.nextInt(1000000);
-            heap.add(numbers[i]);
+            heap.MAX_HEAP_INSERT(numbers[i]);
         }
 
         Integer[] result = heap.getSortedArrayAndEmptyHeap();
@@ -77,8 +77,8 @@ public class Heap_Test
     public void test_insertNumbersOrdered(){
         Max_Heap heap = new Max_Heap(1000);
         for(int i = 100; i > 0; i--){
-            heap.add(i);
-            Assert.assertEquals(100, heap.peek());
+            heap.MAX_HEAP_INSERT(i);
+            Assert.assertEquals(100, heap.HEAP_EXTRACT_MAX());
         }
     }
 
@@ -87,7 +87,7 @@ public class Heap_Test
     public void test_buildHeapFromArrayWithRandomOrder(){
         Max_Heap heap = new Max_Heap(10);
         Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
-        heap.build(numbers);
+        heap.BUILD_MAX_HEAP(numbers);
         Integer[] result = heap.getSortedArrayAndEmptyHeap();
         Arrays.sort(numbers, Collections.reverseOrder());
         Assert.assertArrayEquals(numbers, result);
@@ -98,7 +98,7 @@ public class Heap_Test
     public void test_buildHeapFromArrayWithReverseOrder(){
         Max_Heap heap = new Max_Heap(10);
         Integer[] numbers = new Integer[]{1,2,3,4,5,6,7,8,9,10};
-        heap.build(numbers);
+        heap.BUILD_MAX_HEAP(numbers);
         Integer[] result = heap.getSortedArrayAndEmptyHeap();
         Arrays.sort(numbers, Collections.reverseOrder());
         Assert.assertArrayEquals(numbers, result);
@@ -112,7 +112,7 @@ public class Heap_Test
         for(int i = 0; i < 100; i++){
             numbers[i] = i;
         }
-        heap.build(numbers);
+        heap.BUILD_MAX_HEAP(numbers);
         Integer[] result = heap.getSortedArrayAndEmptyHeap();
         Arrays.sort(numbers, Collections.reverseOrder());
         Assert.assertArrayEquals(numbers, result);
@@ -127,7 +127,7 @@ public class Heap_Test
         for(int i = 0; i < 1000000; i++){
             numbers[i] = random.nextInt((int)1e9);
         }
-        heap.build(numbers);
+        heap.BUILD_MAX_HEAP(numbers);
         Integer[] result = heap.getSortedArrayAndEmptyHeap();
         Arrays.sort(numbers, Collections.reverseOrder());
         Assert.assertArrayEquals(numbers, result);
@@ -137,8 +137,8 @@ public class Heap_Test
     public void test_peekFromHeap(){
         Max_Heap heap = new Max_Heap(10);
         Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
-        heap.build(numbers);
-        Assert.assertEquals(10, heap.peek());
+        heap.BUILD_MAX_HEAP(numbers);
+        Assert.assertEquals(10, heap.HEAP_EXTRACT_MAX());
     }
 
     @Test
@@ -149,9 +149,9 @@ public class Heap_Test
         for(int i = 0; i < 1000000; i++){
             int num = random.nextInt((int)1e9);
             maxNumberInserted = Math.max(maxNumberInserted, num);
-            heap.add(num);
+            heap.MAX_HEAP_INSERT(num);
         }
-        Assert.assertEquals(maxNumberInserted, heap.peek());
+        Assert.assertEquals(maxNumberInserted, heap.HEAP_EXTRACT_MAX());
     }
 
     // generates heap using build heap from array, deletes the root, and checks to see if its correct
@@ -159,9 +159,9 @@ public class Heap_Test
     public void test_deleteFromHeap(){
         Max_Heap heap = new Max_Heap(10);
         Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
-        heap.build(numbers);
+        heap.BUILD_MAX_HEAP(numbers);
         heap.removeTopElement();
-        Assert.assertEquals(9, heap.peek());
+        Assert.assertEquals(9, heap.HEAP_EXTRACT_MAX());
     }
     // generates heap using basic insertion, deletes the root, and checks to see if its correct
     @Test
@@ -172,18 +172,18 @@ public class Heap_Test
         for(int i = 0; i < 1000000; i++){
             int num = random.nextInt((int)1e9);
             numbersAdded[i] = num;
-            heap.add(num);
+            heap.MAX_HEAP_INSERT(num);
         }
         Arrays.sort(numbersAdded, Collections.reverseOrder());
         heap.removeTopElement();
-        Assert.assertEquals((int)numbersAdded[1], heap.peek());
+        Assert.assertEquals((int)numbersAdded[1], heap.HEAP_EXTRACT_MAX());
     }
 
     @Test
     public void test_heapSizeAfterBuild(){
         Max_Heap heap = new Max_Heap(10);
         Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
-        heap.build(numbers);
+        heap.BUILD_MAX_HEAP(numbers);
         Assert.assertEquals(10, heap.getSize());
     }
 
@@ -192,7 +192,7 @@ public class Heap_Test
         Max_Heap heap = new Max_Heap(10);
         Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
         for(int i = 0; i < 10; i++){
-            heap.add(numbers[i]);
+            heap.MAX_HEAP_INSERT(numbers[i]);
         }
         Assert.assertEquals(10, heap.getSize());
     }
@@ -202,7 +202,7 @@ public class Heap_Test
         Max_Heap heap = new Max_Heap(10);
         Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
         for(int i = 0; i < 10; i++){
-            heap.add(numbers[i]);
+            heap.MAX_HEAP_INSERT(numbers[i]);
         }
         heap.removeTopElement();
         Assert.assertEquals(9, heap.getSize());
@@ -215,9 +215,9 @@ public class Heap_Test
         Integer[] numbers = new Integer[1000000];
         for(int i = 0; i < 1000000; i++){
             numbers[i] = random.nextInt(1000000);
-            heap.add(numbers[i]);
+            heap.MAX_HEAP_INSERT(numbers[i]);
         }
-        heap.build(numbers);
+        heap.BUILD_MAX_HEAP(numbers);
         Integer[] result = heap.getSortedArrayAndEmptyHeap();
         Arrays.sort(numbers, Collections.reverseOrder());
         Assert.assertArrayEquals(numbers, result);
@@ -228,15 +228,15 @@ public class Heap_Test
     public void TestPeekInEmptyHeap()
     {
         Max_Heap heap = new Max_Heap(5);
-        heap.add(3);
-        heap.add(2);
+        heap.MAX_HEAP_INSERT(3);
+        heap.MAX_HEAP_INSERT(2);
         heap.emptyHeap();
 
         boolean enterCatch = false;
 
         try
         {
-            heap.peek();
+            heap.HEAP_EXTRACT_MAX();
         }
         catch (Exception e)
         {
@@ -248,8 +248,8 @@ public class Heap_Test
     public void TestRemovingTopElementInEmptyHeap()
     {
         Max_Heap heap = new Max_Heap(5);
-        heap.add(3);
-        heap.add(2);
+        heap.MAX_HEAP_INSERT(3);
+        heap.MAX_HEAP_INSERT(2);
         heap.emptyHeap();
         Assert.assertFalse(heap.removeTopElement());
     }
@@ -259,7 +259,7 @@ public class Heap_Test
     {
         Integer[] arr = new Integer[]{1,2,3,4,5,6};;
         Max_Heap heap = new Max_Heap(4);
-        heap.build(arr);
+        heap.BUILD_MAX_HEAP(arr);
         Assert.assertEquals(10, heap.maxSize);
     }
 
@@ -268,8 +268,9 @@ public class Heap_Test
     {
         Integer[] arr = new Integer[]{1,2,3,4,5,6,7};;
         Max_Heap heap = new Max_Heap(2);
-        heap.build(arr);
+        heap.BUILD_MAX_HEAP(arr);
         Assert.assertEquals(12, heap.maxSize);
+
     }
 
 }

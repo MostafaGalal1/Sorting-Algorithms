@@ -34,7 +34,7 @@ public class Heap_Test_Time
         List<Integer> arr = setupArrayFromFile("10.txt", 10);
         Max_Heap heap = new Max_Heap(10);
         Long t1 = System.nanoTime();
-        heap.build(arr.toArray(new Integer[0]));
+        heap.BUILD_MAX_HEAP(arr.toArray(new Integer[0]));
         Long t2 = System.nanoTime();
         System.out.println("building heap 10 elements took : " + (t2-t1) + " ns");
     }
@@ -44,7 +44,7 @@ public class Heap_Test_Time
         List<Integer> arr = setupArrayFromFile("1e2.txt", 100);
         Max_Heap heap = new Max_Heap(100);
         Long t1 = System.nanoTime();
-        heap.build(arr.toArray(new Integer[0]));
+        heap.BUILD_MAX_HEAP(arr.toArray(new Integer[0]));
         Long t2 = System.nanoTime();
         System.out.println("building heap 1e2 elements took : " + (t2-t1) + " ns");
     }
@@ -54,7 +54,7 @@ public class Heap_Test_Time
         List<Integer> arr = setupArrayFromFile("1e3.txt", 1000);
         Max_Heap heap = new Max_Heap(1000);
         Long t1 = System.nanoTime();
-        heap.build(arr.toArray(new Integer[0]));
+        heap.BUILD_MAX_HEAP(arr.toArray(new Integer[0]));
         Long t2 = System.nanoTime();
         System.out.println("building heap 1e3 elements took : " + (t2-t1) + " ns");
     }
@@ -64,7 +64,7 @@ public class Heap_Test_Time
         List<Integer> arr = setupArrayFromFile("1e4.txt", 10000);
         Max_Heap heap = new Max_Heap(10000);
         Long t1 = System.nanoTime();
-        heap.build(arr.toArray(new Integer[0]));
+        heap.BUILD_MAX_HEAP(arr.toArray(new Integer[0]));
         Long t2 = System.nanoTime();
         System.out.println("building heap 1e4 elements took : " + (t2-t1) + " ns");
     }
@@ -74,7 +74,7 @@ public class Heap_Test_Time
         List<Integer> arr = setupArrayFromFile("1e5.txt", 100000);
         Max_Heap heap = new Max_Heap(100000);
         Long t1 = System.nanoTime();
-        heap.build(arr.toArray(new Integer[0]));
+        heap.BUILD_MAX_HEAP(arr.toArray(new Integer[0]));
         Long t2 = System.nanoTime();
         System.out.println("building heap 1e5 elements took : " + (t2-t1) + " ns");
     }
@@ -84,7 +84,7 @@ public class Heap_Test_Time
         List<Integer> arr = setupArrayFromFile("1e6.txt", 1000000);
         Max_Heap heap = new Max_Heap(1000000);
         Long t1 = System.nanoTime();
-        heap.build(arr.toArray(new Integer[0]));
+        heap.BUILD_MAX_HEAP(arr.toArray(new Integer[0]));
         Long t2 = System.nanoTime();
         System.out.println("building heap 1e6 elements took : " + (t2-t1) + " ns");
     }
@@ -97,7 +97,7 @@ public class Heap_Test_Time
         }
         Max_Heap heap = new Max_Heap(10000);
         Long t1 = System.nanoTime();
-        heap.build(arr.toArray(new Integer[0]));
+        heap.BUILD_MAX_HEAP(arr.toArray(new Integer[0]));
         Long t2 = System.nanoTime();
         System.out.println("inserting 1e4 elements in order took : " + (t2-t1) + " ns");
     }
@@ -110,7 +110,7 @@ public class Heap_Test_Time
         }
         Max_Heap heap = new Max_Heap(10000);
         Long t1 = System.nanoTime();
-        heap.build(arr.toArray(new Integer[0]));
+        heap.BUILD_MAX_HEAP(arr.toArray(new Integer[0]));
         Long t2 = System.nanoTime();
         System.out.println("inserting 1e4 elements in reverse order took : " + (t2-t1) + " ns");
     }
@@ -122,7 +122,7 @@ public class Heap_Test_Time
         Double totalTime = (double) 0;
         for (int i = 0; i < 1e6; i++){
             Long t1 = System.nanoTime();
-            heap.add(rand.nextInt((int)1e9));
+            heap.MAX_HEAP_INSERT(rand.nextInt((int)1e9));
             Long t2 = System.nanoTime();
             totalTime += (t2-t1);
         }
@@ -135,7 +135,7 @@ public class Heap_Test_Time
         Max_Heap heap = new Max_Heap(1000000);
         Random random = new Random();
         for(int i = 0; i < 1000000; i++){
-            heap.add(random.nextInt((int)1e9));
+            heap.MAX_HEAP_INSERT(random.nextInt((int)1e9));
         }
         Double totalTime = (double) 0;
         for(int i = 0; i < 1000000; i++){

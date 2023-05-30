@@ -1,5 +1,8 @@
 package Algorithms;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 public class Max_Heap
 {
     private Integer[] arr;
@@ -15,7 +18,7 @@ public class Max_Heap
     public Max_Heap(Integer[] v)
     {
         this(v.length);
-        this.build(v);
+        this.BUILD_MAX_HEAP(v);
     }
 
     private void DoubleSize()
@@ -29,7 +32,7 @@ public class Max_Heap
         this.maxSize = newmaxSize;
     }
 
-    public void build(Integer[] v)
+    public void BUILD_MAX_HEAP(Integer[] v)
     {
         while (this.maxSize <= v.length)
             this.DoubleSize();
@@ -42,14 +45,26 @@ public class Max_Heap
 
     public Integer[] getSortedArrayAndEmptyHeap()
     {
-        Integer[] v = new Integer[this.size];
-        int index = 0;
+        this.Sort();
+        Integer[] ans = this.getArr();
+        this.emptyHeap();
+        return ans;
+    }
 
+    public void Sort()
+    {
+        int oldSize = this.size;
         while (this.size > 0)
-        {
-            v[index++] = this.peek();
             this.removeTopElement();
-        }
+        this.size = oldSize;
+        this.ReverseArray(this.arr, this.size);
+    }
+
+    public Integer[] getArr()
+    {
+        Integer[] v = new Integer[this.size];
+        for (int i = 0; i < this.size; i++)
+            v[i] = this.arr[i+1];
         return v;
     }
 
@@ -58,15 +73,15 @@ public class Max_Heap
         this.size = 0;
     }
 
-    public void add(int value)
+    public void MAX_HEAP_INSERT(int value)
     {
         if (this.size == this.maxSize-1)
             this.DoubleSize();
         arr[++size] = value;
-        this.heapifyUp(this.size);
+        this.MAX_HEAPIFY(this.size);
     }
 
-    public int peek()
+    public int HEAP_EXTRACT_MAX()
     {
         if(this.size == 0)
             return this.arr[-1];
@@ -78,18 +93,22 @@ public class Max_Heap
         if (this.size == 0)
             return false;
         if (this.size == 0) return false;
-        arr[1] = arr[this.size--];
+
+        int temp = arr[1];
+        arr[1] = arr[this.size];
+        arr[this.size] = temp;
+        this.size--;
         heapifydown(1);
         return true;
     }
 
-    private void heapifyUp(int index)
+    private void MAX_HEAPIFY(int index)
     {
         if (index == 1) return;
         int up = index / 2;
         if (arr[up] > arr[index]) return;
         this.swap(index, up);
-        heapifyUp(up);
+        MAX_HEAPIFY(up);
     }
 
     private void heapifydown(int index)
@@ -126,5 +145,16 @@ public class Max_Heap
     public int getSize()
     {
         return this.size;
+    }
+
+    private void ReverseArray(Integer[] v, int n)
+    {
+        for (int i = 1; i <= n/2; i++)
+        {
+            int j = n - i+1;
+            int temp = v[i];
+            v[i] = v[j];
+            v[j] = temp;
+        }
     }
 }
