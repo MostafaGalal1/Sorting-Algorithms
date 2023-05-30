@@ -1,13 +1,10 @@
 import Algorithms.Max_Heap;
 import org.junit.Assert;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Optional;
 import java.util.Random;
 
 public class Heap_Test
@@ -163,7 +160,7 @@ public class Heap_Test
         Max_Heap heap = new Max_Heap(10);
         Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
         heap.build(numbers);
-        heap.delete();
+        heap.removeTopElement();
         Assert.assertEquals(9, heap.peek());
     }
     // generates heap using basic insertion, deletes the root, and checks to see if its correct
@@ -178,7 +175,7 @@ public class Heap_Test
             heap.add(num);
         }
         Arrays.sort(numbersAdded, Collections.reverseOrder());
-        heap.delete();
+        heap.removeTopElement();
         Assert.assertEquals((int)numbersAdded[1], heap.peek());
     }
 
@@ -207,8 +204,72 @@ public class Heap_Test
         for(int i = 0; i < 10; i++){
             heap.add(numbers[i]);
         }
-        heap.delete();
+        heap.removeTopElement();
         Assert.assertEquals(9, heap.getSize());
+    }
+
+    @Test
+    public void test_doubleSizeInsertionFromArray(){
+        Max_Heap heap = new Max_Heap(10);
+        Random random = new Random();
+        Integer[] numbers = new Integer[1000000];
+        for(int i = 0; i < 1000000; i++){
+            numbers[i] = random.nextInt(1000000);
+            heap.add(numbers[i]);
+        }
+        heap.build(numbers);
+        Integer[] result = heap.getSortedArrayAndEmptyHeap();
+        Arrays.sort(numbers, Collections.reverseOrder());
+        Assert.assertArrayEquals(numbers, result);
+    }
+
+
+    @Test
+    public void TestPeekInEmptyHeap()
+    {
+        Max_Heap heap = new Max_Heap(5);
+        heap.add(3);
+        heap.add(2);
+        heap.emptyHeap();
+
+        boolean enterCatch = false;
+
+        try
+        {
+            heap.peek();
+        }
+        catch (Exception e)
+        {
+            enterCatch = true;
+        }
+        Assert.assertTrue(enterCatch);
+    }
+    @Test
+    public void TestRemovingTopElementInEmptyHeap()
+    {
+        Max_Heap heap = new Max_Heap(5);
+        heap.add(3);
+        heap.add(2);
+        heap.emptyHeap();
+        Assert.assertFalse(heap.removeTopElement());
+    }
+
+    @Test
+    public void TestBuildExcessElements1()
+    {
+        Integer[] arr = new Integer[]{1,2,3,4,5,6};;
+        Max_Heap heap = new Max_Heap(4);
+        heap.build(arr);
+        Assert.assertEquals(10, heap.maxSize);
+    }
+
+    @Test
+    public void TestBuildExcessElements2()
+    {
+        Integer[] arr = new Integer[]{1,2,3,4,5,6,7};;
+        Max_Heap heap = new Max_Heap(2);
+        heap.build(arr);
+        Assert.assertEquals(12, heap.maxSize);
     }
 
 }

@@ -1,14 +1,10 @@
 package Algorithms;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class Max_Heap
 {
     private Integer[] arr;
     int size = 0;
-    int maxSize;
+    public int maxSize;
 
     public Max_Heap(int Maxsize)
     {
@@ -16,8 +12,27 @@ public class Max_Heap
         this.arr = new Integer[this.maxSize];
     }
 
+    public Max_Heap(Integer[] v)
+    {
+        this(v.length);
+        this.build(v);
+    }
+
+    private void DoubleSize()
+    {
+        int newmaxSize = this.maxSize*2;
+        Integer[] newarr = new Integer[newmaxSize];
+
+        for (int i = 1; i <= this.size; i++)
+            newarr[i] = this.arr[i];
+        this.arr = newarr;
+        this.maxSize = newmaxSize;
+    }
+
     public void build(Integer[] v)
     {
+        while (this.maxSize <= v.length)
+            this.DoubleSize();
         this.size = v.length;
         for (int i = 0; i < this.size; i++)
             arr[i + 1] = v[i];
@@ -33,7 +48,7 @@ public class Max_Heap
         while (this.size > 0)
         {
             v[index++] = this.peek();
-            this.delete();
+            this.removeTopElement();
         }
         return v;
     }
@@ -43,12 +58,12 @@ public class Max_Heap
 //        this.size = 0;
 //    }
 
-    public boolean add(int value)
+    public void add(int value)
     {
-        if (this.size == this.maxSize-1) return false;
+        if (this.size == this.maxSize-1)
+            this.DoubleSize();
         arr[++size] = value;
         this.heapifyUp(this.size);
-        return true;
     }
 
     public int peek()
@@ -56,8 +71,10 @@ public class Max_Heap
         return this.arr[1];
     }
 
-    public boolean delete()
+    public boolean removeTopElement()
     {
+        if (this.size == 0)
+            return false;
         if (this.size == 0) return false;
         arr[1] = arr[this.size--];
         heapifydown(1);

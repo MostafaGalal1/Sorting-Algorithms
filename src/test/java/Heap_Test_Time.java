@@ -1,8 +1,4 @@
 import Algorithms.Max_Heap;
-import org.junit.Assert;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
@@ -144,7 +140,7 @@ public class Heap_Test_Time
         Double totalTime = (double) 0;
         for(int i = 0; i < 1000000; i++){
             Long t1 = System.nanoTime();
-            heap.delete();
+            heap.removeTopElement();
             Long t2 = System.nanoTime();
             totalTime += (t2-t1);
         }
