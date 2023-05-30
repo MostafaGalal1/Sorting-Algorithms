@@ -30,7 +30,6 @@ public class Max_Heap
         Integer[] v = new Integer[this.size];
         int index = 0;
 
-
         while (this.size > 0)
         {
             v[index++] = this.peek();
@@ -39,10 +38,10 @@ public class Max_Heap
         return v;
     }
 
-    public void emptyHeap()
-    {
-        this.size = 0;
-    }
+//    public void emptyHeap()
+//    {
+//        this.size = 0;
+//    }
 
     public boolean add(int value)
     {
