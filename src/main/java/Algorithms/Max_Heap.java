@@ -53,10 +53,10 @@ public class Max_Heap
         return v;
     }
 
-//    public void emptyHeap()
-//    {
-//        this.size = 0;
-//    }
+    public void emptyHeap()
+    {
+        this.size = 0;
+    }
 
     public void add(int value)
     {
@@ -68,6 +68,8 @@ public class Max_Heap
 
     public int peek()
     {
+        if(this.size == 0)
+            return this.arr[-1];
         return this.arr[1];
     }
 
