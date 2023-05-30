@@ -22,7 +22,7 @@ public class Heap_Test_Time
         heap.add(2);
 
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
     @Test
     public void test_insert10NumbersAndCheckIfSorted()
@@ -36,7 +36,7 @@ public class Heap_Test_Time
             heap.add(numbers[i]);
         }
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
     // inserts 100 words and checks to see if they are sorted inside the heap
@@ -52,7 +52,7 @@ public class Heap_Test_Time
             heap.add(numbers[i]);
         }
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
     // inserts 1e6 numbers and checks to see if they are sorted inside the heap
@@ -69,7 +69,7 @@ public class Heap_Test_Time
         }
 
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
     @Test
@@ -80,7 +80,7 @@ public class Heap_Test_Time
             heap.add(i);
         }
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
     // generated an array and runs the build heap function on it
@@ -91,7 +91,7 @@ public class Heap_Test_Time
         Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
         heap.build(numbers);
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
     // generated an array and runs the build heap function on it
@@ -102,7 +102,7 @@ public class Heap_Test_Time
         Integer[] numbers = new Integer[]{1,2,3,4,5,6,7,8,9,10};
         heap.build(numbers);
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
     // generated an array and runs the build heap function on it
@@ -116,7 +116,7 @@ public class Heap_Test_Time
         }
         heap.build(numbers);
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
     // generated an array and runs the build heap function on it
@@ -131,7 +131,7 @@ public class Heap_Test_Time
         }
         heap.build(numbers);
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
     @Test
@@ -141,7 +141,7 @@ public class Heap_Test_Time
         Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
         heap.build(numbers);
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
     @Test
@@ -154,7 +154,7 @@ public class Heap_Test_Time
             heap.add(num);
         }
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
     // generates heap using build heap from array, deletes the root, and checks to see if its correct
@@ -166,7 +166,7 @@ public class Heap_Test_Time
         heap.build(numbers);
         heap.delete();
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
     // generates heap using basic insertion, deletes the root, and checks to see if its correct
     @Test
@@ -182,7 +182,7 @@ public class Heap_Test_Time
         }
         heap.delete();
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
     @Test
@@ -192,7 +192,7 @@ public class Heap_Test_Time
         Integer[] numbers = new Integer[]{3,4,2,1,5,9,10,2,9,1};
         heap.build(numbers);
         Long t2 = System.currentTimeMillis();
-        System.out.println("Simple Sorting 10 elements took : " + (t2-t1) + " ms");
+        System.out.println("inserting 10 elements took : " + (t2-t1) + " ms");
     }
 
 }
