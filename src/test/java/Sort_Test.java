@@ -19,17 +19,20 @@ public class Sort_Test {
         String newPath = path.replace("\"","");
         List<Integer> expectedArray = new ArrayList<>();
         try {
-            FileInputStream file = new FileInputStream(newPath);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(file));
-            String line = reader.readLine();
-            for(int i = 0; i < sz; i++){
-                expectedArray.add(Integer.parseInt(line));
-                line = reader.readLine();
+            File file = new File(newPath);
+            Scanner scanner = new Scanner(file);
+            String line = scanner.nextLine();
+            String[] elements = line.split(",");
+
+            for (String element : elements) {
+                int value = Integer.parseInt(element.trim());
+                expectedArray.add(value);
             }
-            reader.close();
+            scanner.close();
         } catch (IOException e) {
-            System.out.println("Error happened while setting up file");
+            System.out.println("No such File!");
         }
+
         return expectedArray;
     }
 

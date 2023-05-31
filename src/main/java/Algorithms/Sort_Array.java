@@ -9,7 +9,7 @@ public class Sort_Array {
     List<Integer> unsorted_Array;
     int size;
 
-   /* public Sort_Array(String file_path)
+    public Sort_Array(String file_path)
     {
         this.unsorted_Array = new ArrayList<>();
         String path = file_path.replace("\"","");
@@ -30,28 +30,28 @@ public class Sort_Array {
         }
 
         this.size = this.unsorted_Array.size();
-    }*/
-
-    public Sort_Array(String file_path)
-    {
-        this.unsorted_Array = new ArrayList<>();
-        String path = file_path.replace("\"","");
-
-        try {
-            FileInputStream file = new FileInputStream(path);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(file));
-            String line = reader.readLine();
-            while (line != null) {
-                this.unsorted_Array.add(Integer.parseInt(line));
-                line = reader.readLine();
-            }
-            reader.close();
-        } catch (IOException e) {
-            System.out.println("No such File!");
-        }
-
-        this.size = this.unsorted_Array.size();
     }
+
+//    public Sort_Array(String file_path)
+//    {
+//        this.unsorted_Array = new ArrayList<>();
+//        String path = file_path.replace("\"","");
+//
+//        try {
+//            FileInputStream file = new FileInputStream(path);
+//            BufferedReader reader = new BufferedReader(new InputStreamReader(file));
+//            String line = reader.readLine();
+//            while (line != null) {
+//                this.unsorted_Array.add(Integer.parseInt(line));
+//                line = reader.readLine();
+//            }
+//            reader.close();
+//        } catch (IOException e) {
+//            System.out.println("No such File!");
+//        }
+//
+//        this.size = this.unsorted_Array.size();
+//    }
 
     public Sort_Array(List<Integer> unsorted_Array)
     {
