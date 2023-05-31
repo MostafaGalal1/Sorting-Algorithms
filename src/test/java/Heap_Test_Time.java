@@ -146,6 +146,21 @@ public class Heap_Test_Time
     }
 
     @Test
+    public void test_sortHeapAverageCase(){
+        List<Integer> arr = new ArrayList<>();
+        for(int i = 0; i < 1e4; i++){
+            arr.add(i);
+        }
+        Collections.shuffle(arr);
+        Max_Heap heap = new Max_Heap(10000);
+        Long t1 = System.currentTimeMillis() ;
+        heap.BUILD_MAX_HEAP(arr.toArray(new Integer[0]));
+        heap.Sort();
+        Long t2 = System.currentTimeMillis() ;
+        System.out.println("heap sort average case 1e4 elements in took : " + (t2-t1) + " ms");
+    }
+
+    @Test
     public void test_meanTimeForInsertion(){
         Max_Heap heap = new Max_Heap((int)1e6);
         Random rand = new Random();
