@@ -6,9 +6,8 @@ import Algorithms.Sorting_Choice;
 
 public class App
 {
-     // TODO convert this shit into JavaFX GUI
-     public void display()
-     {
+     // TODO da 3ndaha
+     public void display() {
           Scanner scanner = new Scanner(System.in);
 
           System.out.print("Enter the file path: ");
@@ -16,8 +15,7 @@ public class App
 
           Sort_Array sortArray = new Sort_Array(filePath);
 
-          while (true)
-          {
+          while (true) {
                Main_Menu();
                int choice = scanner.nextInt();
                scanner.nextLine();
@@ -36,13 +34,13 @@ public class App
           }
      }
 
-     private static void Sort_Menu(Scanner scanner, Sort_Array sortArray)
-     {
+     private static void Sort_Menu(Scanner scanner, Sort_Array sortArray) {
           System.out.println();
           System.out.println("----- Sort Menu -----");
           System.out.println("1. Simple Sort");
           System.out.println("2. Efficient Sort");
           System.out.println("3. Non-Comparison Sort");
+          System.out.println("4. Heap Sort");
           System.out.println("0. Back to Main Menu");
           System.out.println("---------------------");
           System.out.print("Enter your choice: ");
@@ -68,6 +66,9 @@ public class App
                case 3:
                     sortedArray = sortArray.Non_Comparison_Sort(choice);
                     break;
+               case 4:
+                    sortedArray = sortArray.Heap_Sort(choice);
+                    break;
                default:
                     System.out.println("Invalid choice!");
                     return;
@@ -88,8 +89,7 @@ public class App
           }
      }
 
-     private static void Main_Menu()
-     {
+     private static void Main_Menu() {
           System.out.println();
           System.out.println("----- Menu -----");
           System.out.println("0. Exit");
@@ -98,8 +98,7 @@ public class App
           System.out.print("Enter your choice: ");
      }
 
-     public static void main(String[] args)
-     {
+     public static void main(String[] args) {
           App app = new App();
           app.display();
      }

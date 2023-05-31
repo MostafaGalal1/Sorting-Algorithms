@@ -1,7 +1,8 @@
 package Algorithms;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.List;
 
 public class Max_Heap
 {
@@ -51,13 +52,15 @@ public class Max_Heap
         return ans;
     }
 
-    public void Sort()
+    public List<List<Integer>> Sort()
     {
+        List<List<Integer>> results = new ArrayList<>();
         int oldSize = this.size;
         while (this.size > 0)
-            this.removeTopElement();
+            this.removeTopElement(results);
         this.size = oldSize;
         this.ReverseArray(this.arr, this.size);
+        return results;
     }
 
     public Integer[] getArr()
@@ -88,17 +91,17 @@ public class Max_Heap
         return this.arr[1];
     }
 
-    public boolean removeTopElement()
+    public boolean removeTopElement(List<List<Integer>> results)
     {
         if (this.size == 0)
             return false;
-        if (this.size == 0) return false;
 
         int temp = arr[1];
         arr[1] = arr[this.size];
         arr[this.size] = temp;
         this.size--;
         heapifydown(1);
+        results.add( new ArrayList<>(Arrays.asList(arr)));
         return true;
     }
 

@@ -34,13 +34,32 @@ public class Sort_Test_Time {
         System.out.println("Simple Sorting 1e3 elements took : " + (t2-t1) + " ms");
     }
     @Test
-    public void time_analysis_simpleSort_1e4e4(){
+    public void time_analysis_simpleSort_1e4(){
         Sort_Array sortObject = new Sort_Array(path + "\\1e4.txt");
         Long t1 = System.currentTimeMillis();
         List<Integer> result = sortObject.Simple_Sort(Sorting_Choice.Final_Result).get(0);
         Long t2 = System.currentTimeMillis();
         System.out.println("Simple Sorting 1e4 elements took : " + (t2-t1) + " ms");
     }
+
+    @Test
+    public void time_analysis_simpleSort_500(){
+        Sort_Array sortObject = new Sort_Array(path + "\\500.txt");
+        Long t1 = System.currentTimeMillis();
+        List<Integer> result = sortObject.Simple_Sort(Sorting_Choice.Final_Result).get(0);
+        Long t2 = System.currentTimeMillis();
+        System.out.println("Simple Sorting 500 elements took : " + (t2-t1) + " ms");
+    }
+
+    @Test
+    public void time_analysis_simpleSort_5000(){
+        Sort_Array sortObject = new Sort_Array(path + "\\5000.txt");
+        Long t1 = System.currentTimeMillis();
+        List<Integer> result = sortObject.Simple_Sort(Sorting_Choice.Final_Result).get(0);
+        Long t2 = System.currentTimeMillis();
+        System.out.println("Simple Sorting 5000 elements took : " + (t2-t1) + " ms");
+    }
+
 //    @Test
 //    public void time_analysis_simpleSort_1e5(){
 //        Sort_Array sortObject = new Sort_Array(path + "\\1e5.txt");
@@ -90,6 +109,25 @@ public class Sort_Test_Time {
         Long t2 = System.currentTimeMillis();
         System.out.println("Efficient Sorting 1e4 elements took : " + (t2-t1) + " ms");
     }
+
+    @Test
+    public void time_analysis_efficientSort_5000(){
+        Sort_Array sortObject = new Sort_Array(path + "\\5000.txt");
+        Long t1 = System.currentTimeMillis();
+        List<Integer> result = sortObject.Efficient_Sort(Sorting_Choice.Final_Result).get(0);
+        Long t2 = System.currentTimeMillis();
+        System.out.println("Efficient Sorting 5000 elements took : " + (t2-t1) + " ms");
+    }
+
+    @Test
+    public void time_analysis_efficientSort_500(){
+        Sort_Array sortObject = new Sort_Array(path + "\\500.txt");
+        Long t1 = System.currentTimeMillis();
+        List<Integer> result = sortObject.Efficient_Sort(Sorting_Choice.Final_Result).get(0);
+        Long t2 = System.currentTimeMillis();
+        System.out.println("Efficient Sorting 500 elements took : " + (t2-t1) + " ms");
+    }
+
 //    @Test
 //    public void time_analysis_efficientSort_1e5(){
 //        Sort_Array sortObject = new Sort_Array(path + "\\1e5.txt");
@@ -140,11 +178,30 @@ public class Sort_Test_Time {
         Long t2 = System.currentTimeMillis();
         System.out.println("Non comparison Sorting 1e4 elements took : " + (t2-t1) + " ms");
     }
-//    @Test
-//    public void time_analysis_no_comparisontSort_1e5(){
-//        Sort_Array sortObject = new Sort_Array(path + "\\1e5.txt");
+
+    @Test
+    public void time_analysis_no_comparisontSort_5000(){
+        Sort_Array sortObject = new Sort_Array(path + "\\5000.txt");
+        Long t1 = System.currentTimeMillis();
+        List<Integer> result = sortObject.Non_Comparison_Sort(Sorting_Choice.Final_Result).get(0);
+        Long t2 = System.currentTimeMillis();
+        System.out.println("Non comparison Sorting 5000 elements took : " + (t2-t1) + " ms");
+    }
+
+    @Test
+    public void time_analysis_no_comparisontSort_500(){
+        Sort_Array sortObject = new Sort_Array(path + "\\500.txt");
+        Long t1 = System.currentTimeMillis();
+        List<Integer> result = sortObject.Non_Comparison_Sort(Sorting_Choice.Final_Result).get(0);
+        Long t2 = System.currentTimeMillis();
+        System.out.println("Non comparison Sorting 500 elements took : " + (t2-t1) + " ms");
+    }
+
+//   @Test
+//    public void time_analysis_efficientSort_5000(){
+//        Sort_Array sortObject = new Sort_Array(path + "\\5000.txt");
 //        Long t1 = System.currentTimeMillis();
-//        List<Integer> result = sortObject.Non_Comparison_Sort(Sorting_Choice.Final_Result).get(0);
+//        List<Integer> result = sortObject.Efficient_Sort(Sorting_Choice.Final_Result).get(0);
 //        Long t2 = System.currentTimeMillis();
 //        System.out.println("Simple Sorting 1e5 elements took : " + (t2-t1) + " ms");
 //    }

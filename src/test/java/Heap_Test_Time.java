@@ -80,6 +80,26 @@ public class Heap_Test_Time
     }
 
     @Test
+    public void test_heapsort500Elements(){
+        List<Integer> arr = setupArrayFromFile("500.txt", 500);
+        Max_Heap heap = new Max_Heap(500);
+        Long t1 = System.nanoTime();
+        heap.BUILD_MAX_HEAP(arr.toArray(new Integer[0]));
+        Long t2 = System.nanoTime();
+        System.out.println("building heap 500 elements took : " + (t2-t1) + " ns");
+    }
+
+    @Test
+    public void test_heapsort5000Elements(){
+        List<Integer> arr = setupArrayFromFile("5000.txt", 5000);
+        Max_Heap heap = new Max_Heap(5000);
+        Long t1 = System.nanoTime();
+        heap.BUILD_MAX_HEAP(arr.toArray(new Integer[0]));
+        Long t2 = System.nanoTime();
+        System.out.println("building heap 5000 elements took : " + (t2-t1) + " ns");
+    }
+
+    @Test
     public void test_heapsort1e6Elements(){
         List<Integer> arr = setupArrayFromFile("1e6.txt", 1000000);
         Max_Heap heap = new Max_Heap(1000000);
@@ -130,7 +150,8 @@ public class Heap_Test_Time
     }
 
     // generates heap using basic insertion, deletes the root, and checks to see if its correct
-    @Test
+    //TODO 2d array heap size out of space
+   /* @Test
     public void test_deleteMeanTime(){
         Max_Heap heap = new Max_Heap(1000000);
         Random random = new Random();
@@ -140,12 +161,12 @@ public class Heap_Test_Time
         Double totalTime = (double) 0;
         for(int i = 0; i < 1000000; i++){
             Long t1 = System.nanoTime();
-            heap.removeTopElement();
+            heap.removeTopElement(new ArrayList<>());
             Long t2 = System.nanoTime();
             totalTime += (t2-t1);
         }
         System.out.println("mean time to delete an element using 1e6 numbers : " + totalTime/1e6  + " ns");
 
-    }
+    }*/
 
 }

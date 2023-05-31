@@ -9,6 +9,29 @@ public class Sort_Array {
     List<Integer> unsorted_Array;
     int size;
 
+   /* public Sort_Array(String file_path)
+    {
+        this.unsorted_Array = new ArrayList<>();
+        String path = file_path.replace("\"","");
+
+        try {
+            File file = new File(file_path);
+            Scanner scanner = new Scanner(file);
+            String line = scanner.nextLine();
+            String[] elements = line.split(",");
+
+            for (String element : elements) {
+                int value = Integer.parseInt(element.trim());
+                this.unsorted_Array.add(value);
+            }
+            scanner.close();
+        } catch (IOException e) {
+            System.out.println("No such File!");
+        }
+
+        this.size = this.unsorted_Array.size();
+    }*/
+
     public Sort_Array(String file_path)
     {
         this.unsorted_Array = new ArrayList<>();
@@ -146,6 +169,20 @@ public class Sort_Array {
             auxiliary_Array.set(frequency_Array[this.unsorted_Array.get(i) - min]++, this.unsorted_Array.get(i));
             results.add(new ArrayList<>(auxiliary_Array));
         }
+
+        if (choice == Final_Result){
+            List<List<Integer>> res = new ArrayList<>();
+            res.add(results.get(results.size() - 1));
+            return res;
+        }
+        return results;
+    }
+
+    public List<List<Integer>> Heap_Sort(Sorting_Choice choice) {
+        Integer[] auxiliary_Array = new Integer[this.size];
+        Max_Heap maxHeap = new Max_Heap(this.unsorted_Array.toArray(auxiliary_Array));
+
+        List<List<Integer>> results = maxHeap.Sort();
 
         if (choice == Final_Result){
             List<List<Integer>> res = new ArrayList<>();
