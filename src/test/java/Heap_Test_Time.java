@@ -190,7 +190,7 @@ public class Heap_Test_Time
             Long t2 = System.currentTimeMillis() ;
             totalTime += (t2-t1);
         }
-        System.out.println("mean time to delete an element using 1e6 numbers : " + totalTime/1e4  + " ms");
+        System.out.println("mean time to delete an element using 1e4 numbers : " + totalTime/1e4  + " ms");
 
     }
 

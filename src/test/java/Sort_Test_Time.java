@@ -296,7 +296,7 @@ public class Sort_Test_Time {
         System.out.println("Efficient Sorting Average case took : " + (t2-t1) + " ms");
     }
 
-    // best case in counting sort is still O(n) but it is not dependent on the input
+    // best case in counting sort is still O(n) but it is not dependent on the input, it depends on the range
     @Test
     public void test_nonComparsionSortingBestCase(){
         List<Integer> expected = new ArrayList<>();
